@@ -28,10 +28,6 @@
 # Construct your list in the following format
 # This is an example
 REPLACE_EXAMPLE="
-/system/app/Youtube
-/system/priv-app/SystemUI
-/system/priv-app/Settings
-/system/framework
 "
 
 # Construct your own list here
@@ -43,7 +39,7 @@ REPLACE="
 ##########################################################################################
 
 set_permissions() {
-  : # Remove this if adding to this function
+  # Remove this if adding to this function
 
   # Note that all files/folders in magisk module directory have the $MODPATH prefix - keep this prefix on all of your files/folders
   # Some examples:
@@ -59,6 +55,9 @@ set_permissions() {
   
   # set_perm $MODPATH/system/lib/libart.so 0 0 0644
   # set_perm /data/local/tmp/file.txt 0 0 644
+  set_perm_recursive $MODPATH 0 0 0755 0755
+  set_perm $MODPATH/LICENSE 0 0 0644
+  set_perm $MODPATH/module.prop 0 0 0644
 }
 
 ##########################################################################################
